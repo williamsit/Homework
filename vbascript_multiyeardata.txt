@@ -1,0 +1,158 @@
+Sub testing()
+
+
+Dim ws As Worksheet
+For Each ws In Sheets
+ws.Activate
+
+
+Dim ticker As String
+Dim tickerdate As Double
+Dim tickeropen As Double
+Dim tickerclose As Double
+Dim tickerhigh As Double
+Dim tickerlow As Double
+Dim tickervolume As Double
+Dim yearlychange As Double
+Dim percentchange As Double
+Dim greatestincrease As Double
+Dim greatestdecrease As Double
+Dim greatestvolume As Double
+
+
+Cells(1, 9) = "<ticker>"
+Cells(1, 10) = "<date start>"
+Cells(1, 11) = "<open>"
+Cells(1, 12) = "<high>"
+Cells(1, 13) = "<low>"
+Cells(1, 14) = "<close>"
+Cells(1, 15) = "<total stock volume>"
+Cells(1, 16) = "<yearly change>"
+Cells(1, 17) = "<percent change>"
+
+
+Dim row As Long
+Dim col As Long
+Dim lastrow As Long
+lastrow = Cells(Rows.Count, 1).End(xlUp).row
+Dim lastcol As Long
+lastcol = Cells(1, Columns.Count).End(xlToLeft).Column
+
+
+Dim summarycount As Integer
+summarycount = 2
+Dim curntrowcount As Long
+
+For row = 2 To lastrow
+        
+        
+        ticker = Cells(row, 1)
+        tickerdate = Cells(row, 2)
+        tickeropen = Cells(row, 3)
+        tickerclose = Cells(row, 6)
+        tickerhigh = Cells(row, 4)
+        tickerlow = Cells(row, 5)
+        
+        If ticker = Cells((row + 1), 1) Then
+            tickervolume = tickervolume + Cells(row, 7)
+            curntrowcount = curntrowcount + 1
+            
+            If tickerhigh >= Cells((row + 1), 4) Then
+                tickerhigh = Cells(row, 4)
+            ElseIf tickerhigh < Cells((row + 1), 4) Then
+                tickerhigh = Cells((row + 1), 4)
+            End If
+            
+            If tickerlow <= Cells((row + 1), 5) Then
+                tickerlow = Cells(row, 5)
+            ElseIf tickerlow > Cells((row + 1), 5) Then
+                tickerlow = Cells((row + 1), 5)
+            End If
+            
+        ElseIf ticker <> Cells((row + 1), 1) Then
+            tickervolume = tickervolume + Cells(row, 7)
+            tickerdate = Cells((row - curntrowcount), 2)
+            tickeropen = Cells((row - curntrowcount), 3)
+            tickerclose = Cells(row, 6)
+            Cells(summarycount, 9) = ticker
+            Cells(summarycount, 10) = tickerdate
+            Cells(summarycount, 11) = tickeropen
+            Cells(summarycount, 12) = tickerhigh
+            Cells(summarycount, 13) = tickerlow
+            Cells(summarycount, 14) = tickerclose
+            Cells(summarycount, 15) = tickervolume
+            summarycount = summarycount + 1
+            curntrowcount = 0
+            ticker = " "
+            tickervolume = 0
+        End If
+
+Next row
+
+Dim summtablerow As Integer
+Dim summtablecol As Integer
+Dim summtablelastrow As Integer
+summtablelastrow = Cells(Rows.Count, 9).End(xlUp).row
+Dim summtablelastcol As Integer
+summtablelastcol = Cells(2, Columns.Count).End(xlToLeft).Column
+
+For summtablerow = 2 To summtablelastrow
+    yearlychange = Cells(summtablerow, 14) - Cells(summtablerow, 11)
+    Cells(summtablerow, 16) = yearlychange
+    Range("Q2:Q" & summtablelastrow).NumberFormat = "0.00%"
+        If yearlychange >= 0 Then
+            Cells(summtablerow, 16).Interior.ColorIndex = 4
+        ElseIf yearlychange < 0 Then
+            Cells(summtablerow, 16).Interior.ColorIndex = 3
+        End If
+        
+    If yearlychange <> 0 And Cells(summtablerow, 11) <> 0 Then
+        percentchange = yearlychange / (Cells(summtablerow, 11))
+    End If
+    Cells(summtablerow, 17) = percentchange
+Next summtablerow
+
+
+Dim grtpctinc As Double
+Dim grtpctdec As Double
+Dim grttotalvol As Double
+
+Cells(2, 20) = "Greatest % Increase"
+Cells(3, 20) = "Greatest % Decrease"
+Cells(4, 20) = "Greatest Total Volume"
+Cells(1, 21) = "Ticker"
+Cells(1, 22) = "Value"
+Cells(2, 22) = grtpctinc
+Cells(3, 22) = grtpctdec
+Cells(4, 22) = grttotalvol
+grtpctinc = 0
+grtpctdec = 0
+grttotalvol = 0
+Range("V2:V3").NumberFormat = "0.00%"
+
+For summtablerow = 2 To summtablelastrow
+    If Cells(summtablerow, 17) > grtpctinc Then
+        grtpctinc = Cells(summtablerow, 17)
+        Cells(2, 21) = Cells(summtablerow, 9)
+        Cells(2, 22) = grtpctinc
+    ElseIf Cells(summtablerow, 17) < grtpctdec Then
+        grtpctdec = Cells(summtablerow, 17)
+        Cells(3, 21) = Cells(summtablerow, 9)
+        Cells(3, 22) = grtpctdec
+    End If
+    If Cells(summtablerow, 15) > grttotalvol Then
+        grttotalvol = Cells(summtablerow, 15)
+        Cells(4, 21) = Cells(summtablerow, 9)
+        Cells(4, 22) = grttotalvol
+    End If
+Next summtablerow
+
+
+
+Application.WorksheetFunction.Min (Range("Q2:Q" & summtablelastrow))
+Next ws
+
+
+End Sub
+
+
