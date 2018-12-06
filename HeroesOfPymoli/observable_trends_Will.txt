@@ -1,0 +1,9 @@
+Observable Trend 1: Vast majority of players are of the male gender, making up 84% of purchases.
+
+
+Observable Trend 2: Majority of players who make purchases in the game are between the ages of 15 and 25 - approximately 77% of all purchases. 
+
+
+Observable Trend 3: Of the top 5 most popular items, each one has an item price higher than $3.50. However, the 5th most popular item has an item price of only $1.
+
+
