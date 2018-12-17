@@ -1,0 +1,7 @@
+Observable Trend 1:The closer a city is to the equator (0 Latitude), the greater the maximum temperature.
+
+
+Observable Trend 2: Majority of cities 20 and 40 latitude have a lower maximum temperature compared to its opposite of -20 and -40 latitude.
+
+
+Observable Trend 3: No strong relationship between latitude & windspeed, but cities in the northern hemisphere have higher winds than cities in the southern hemisphere. 
