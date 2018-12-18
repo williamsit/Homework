@@ -1,0 +1,8 @@
+Observable Trend 1: Pyber offers more rides in Urban city types than Rural city types, but at a lower average fare.
+
+
+Observable Trend 2: Rural city types offer the least percentage of total rides, and account for the least percentage in average fare too. 
+
+
+Observable Trend 3: The percentage of total fares in Suburban city types almost doubles when compared to percentage of total drivers in Suburban areas.
+		    There should be more suburban drivers and there should be a limit to urban drivers because of diminished returns.
