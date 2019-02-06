@@ -12,6 +12,7 @@ candidate_1_vote_count = 0
 candidate_2_vote_count = 0
 candidate_3_vote_count = 0
 winner = 0
+loser = 0
 
 election_data_loc = os.path.join("Resources", "election_data.csv")
 with open (election_data_loc, "r", newline='') as election_data_open:
