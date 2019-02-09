@@ -1,4 +1,4 @@
-Observable Trend 1: Pyber offers more rides in Urban city types than Rural city types, but at a lower average fare.
+Observable Trend 1: Pyber offers more rides in Urban city types than Rural city types, but at a lower average fare compared to other city types.
 
 
 Observable Trend 2: Rural city types offer the least percentage of total rides, and account for the least percentage in average fare too. 
