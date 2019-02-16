@@ -135,8 +135,11 @@ def scrape_mars_hemispheres():
         browser.quit()
 
 def scrape_mars_info():
-    scrape_mars_news()
-    scrape_mars_image()
-    scrape_mars_weather()
-    scrape_mars_facts()
-    scrape_mars_hemispheres()
+    try:
+        scrape_mars_news()
+        scrape_mars_image()
+        scrape_mars_weather()
+        scrape_mars_facts()
+        scrape_mars_hemispheres()
+    except:
+        print("error")
