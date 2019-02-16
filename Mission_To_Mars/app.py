@@ -17,8 +17,8 @@ def scrape():
     mars_info = mongo.db.mars_info 
     mars_data = scrape_mars.scrape_mars_news()
     mars_data = scrape_mars.scrape_mars_image()
-    mars_data = scrape_mars.scrape_mars_facts()
     mars_data = scrape_mars.scrape_mars_weather()
+    mars_data = scrape_mars.scrape_mars_facts()
     mars_data = scrape_mars.scrape_mars_hemispheres()
     mars_info.update({}, mars_data, upsert=True)
     return redirect("/", code=302)
