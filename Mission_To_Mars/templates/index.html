@@ -84,16 +84,17 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="jumbotron" style="text-align:center">
+
                 <h2 class="display-6">Mars Hemispheres</h2>
                 <hr class="my-3">
 
                 <div class="row">
-                    <div class="col-lg-12">
-                    {% for each_hemisphere in mars_info.hemisphere_image_urls %}                
-                      <img src="{{ each_hemisphere.img_url }}" height="300" width="300"><br>
-                      {{ each_hemisphere.title }}<br>
-                    {% endfor %}
-                  </div>
+                  {% for each_hemisphere in mars_info.hemisphere_image_urls %} 
+                    <div class="col-lg-6">              
+                      <img src="{{ each_hemisphere.img_url }}" height="450" width="450"><br>
+                      <strong>{{ each_hemisphere.title }}</strong><br><br>
+                    </div>
+                  {% endfor %}
                 </div>
 
                
@@ -115,29 +116,5 @@
       {% endif %}
       {% endif %}
 
-        
-
-
     </body>
-      
-
-
-
-
-
-
-
-
-    <!--
-      <a href="/scrape">Scrape Data</a> --- DONE
-      {{ mars_info.news_title }} --- DONE
-      {{ mars_info.news_paragraph }} --- DONE
-      <img src="{{ mars_info.featured_image_url }}"> --- DONE
-      {{ mars_info.mars_weather }}
-      {{ mars_info.mars_facts|safe}}
-      {% for each_hemisphere in mars_info.hemisphere_image_urls %}
-      {{ each_hemisphere.title }}
-      <img src="{{ each_hemisphere.img_url }}">
-      {% endfor %}
-    -->
   </html>
