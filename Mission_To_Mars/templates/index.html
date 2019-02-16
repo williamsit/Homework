@@ -25,6 +25,23 @@
       </div>
       
     </body>
+      {% if mars_info.news_title %}
+        {{ mars_info.news_title }}
+      {% endif %}
+        <p>
+          Awaiting data.....
+        </p>
+
+
+
+
+
+
+
+
+
+
+    <!--
       <a href="/scrape">Scrape Data</a>
       {{ mars_info.news_title }}
       {{ mars_info.news_paragraph }}
@@ -35,5 +52,5 @@
       {{ each_hemisphere.title }}
       <img src="{{ each_hemisphere.img_url }}">
       {% endfor %}
-
+    -->
   </html>
