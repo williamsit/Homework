@@ -1,5 +1,15 @@
 <<<<<<< HEAD
 <!DOCTYPE html>
 <html>
+        <a href="/scrape">Scrape Data</a>
+        {{ mars_info.news_title }}
+        {{ mars_info.news_paragraph }}
+        <img src="{{ mars_info.featured_image_url }}">
+        {{ mars_info.mars_weather }}
+        {{ mars_info.mars_facts|safe}}
+        {% for each_hemisphere in mars_info.hemisphere_image_urls %}
+        {{ each_hemisphere.title }}
+        <img src="{{ each_hemisphere.img_url }}">
+        {% endfor %}
     
 </html>
