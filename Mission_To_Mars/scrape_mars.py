@@ -134,6 +134,7 @@ def scrape_mars_hemispheres():
     finally:
         browser.quit()
 
+#Scrape mars info
 def scrape_mars_info():
     try:
         scrape_mars_news()
